@@ -24,9 +24,11 @@ sudo nano /etc/dhcpcd.conf
 	nohook wpa_supplicant
 	
 	
-sudo nano /etc/udev/rules.d/70-persistent-net.rules
+sudo nano /etc/udev/rules.d/72-persistent-net.rules
 
-	SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="xx:xx:xx:xx:xx:xx", NAME="wlan0"
+	ACTION=="add", SUBSYSTEM=="net", DRIVERS=="?*", ATTR{address}=="xx:xx:xx:xx:xx:xx", KERNEL=="w*",NAME="wlan1"
+	ACTION=="add", SUBSYSTEM=="net", DRIVERS=="?*", ATTR{address}=="xx:xx:xx:xx:xx:xx", KERNEL=="w*",NAME="wlan0"
+
 	
 sudo nano /etc/dnsmasq.conf
 
